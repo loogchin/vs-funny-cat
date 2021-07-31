@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="FNF_main_menu_assets.png">
+	<!-- Created with Adobe Animate version 20.5.1.31044 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="donate basic0000" x="0" y="0" width="731" height="111" frameX="-177" frameY="-22" frameWidth="908" frameHeight="155"/>
+	<SubTexture name="donate white0000" x="731" y="0" width="908" height="155"/>
+	<SubTexture name="freeplay basic0000" x="0" y="155" width="751" height="111" frameX="-178" frameY="-22" frameWidth="929" frameHeight="155"/>
+	<SubTexture name="freeplay white0000" x="751" y="155" width="929" height="155"/>
+	<SubTexture name="options basic0000" x="0" y="310" width="711" height="111" frameX="-191" frameY="-22" frameWidth="902" frameHeight="155"/>
+	<SubTexture name="options white0000" x="711" y="310" width="902" height="155"/>
+	<SubTexture name="credits arrow0000" x="0" y="465" width="1177" height="155"/>
+	<SubTexture name="freeplay arrow0000" x="0" y="620" width="1221" height="155"/>
+	<SubTexture name="options arrow0000" x="0" y="775" width="1169" height="155"/>
+	<SubTexture name="story mode basic0000" x="1169" y="775" width="833" height="111" frameX="-183" frameY="-22" frameWidth="1016" frameHeight="155"/>
+	<SubTexture name="story mode white0000" x="0" y="930" width="1016" height="155"/>
+	<SubTexture name="storymod arrow0000" x="0" y="1085" width="1259" height="155"/>
+</TextureAtlas>

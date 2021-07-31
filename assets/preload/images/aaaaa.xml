@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="aaaaa.png">
+<SubTexture name="tut normal0000" x="0" y="0" width="1156" height="363" frameX="0" frameY="0" frameWidth="1156" frameHeight="363" />
+<SubTexture name="tut selected0000" x="1156" y="0" width="1156" height="363" frameX="0" frameY="0" frameWidth="1156" frameHeight="363" />
+<SubTexture name="notut normal0000" x="2312" y="0" width="1156" height="363" frameX="0" frameY="0" frameWidth="1156" frameHeight="363" />
+<SubTexture name="notut selected0000" x="3468" y="0" width="1156" height="363" frameX="0" frameY="0" frameWidth="1156" frameHeight="363" />
+</TextureAtlas>

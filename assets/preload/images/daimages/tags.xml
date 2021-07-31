@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="tags.png">
+<SubTexture name="kauan0000" x="0" y="0" width="161" height="49" frameX="0" frameY="0" frameWidth="161" frameHeight="49" />
+<SubTexture name="bf0000" x="161" y="0" width="161" height="49" frameX="0" frameY="0" frameWidth="161" frameHeight="49" />
+<SubTexture name="gf0000" x="322" y="0" width="161" height="49" frameX="0" frameY="0" frameWidth="161" frameHeight="49" />
+</TextureAtlas>

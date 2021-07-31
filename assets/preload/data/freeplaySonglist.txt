@@ -1,0 +1,4 @@
+Tutorial:gf:0
+fuzzy:kauan:1
+claws:kauan:1
+catplay:kauannight:1

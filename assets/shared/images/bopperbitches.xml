@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bopperbitches.png">
+	<!-- Created with Adobe Animate version 20.5.1.31044 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="boppins mfs0000" x="0" y="0" width="2001" height="452" frameX="0" frameY="-73" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0001" x="0" y="0" width="2001" height="452" frameX="0" frameY="-73" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0002" x="2001" y="0" width="1953" height="472" frameX="-24" frameY="-53" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0003" x="2001" y="0" width="1953" height="472" frameX="-24" frameY="-53" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0004" x="0" y="472" width="1891" height="502" frameX="-55" frameY="-24" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0005" x="0" y="472" width="1891" height="502" frameX="-55" frameY="-24" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0006" x="1891" y="472" width="1819" height="526" frameX="-91" frameY="0" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0007" x="1891" y="472" width="1819" height="526" frameX="-91" frameY="0" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0008" x="0" y="998" width="1847" height="521" frameX="-77" frameY="-4" frameWidth="2001" frameHeight="526"/>
+	<SubTexture name="boppins mfs0009" x="0" y="998" width="1847" height="521" frameX="-77" frameY="-4" frameWidth="2001" frameHeight="526"/>
+</TextureAtlas>

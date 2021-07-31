@@ -1,0 +1,15 @@
+:bg:1-1
+:k: HEY!
+:bg:1-2
+:bf: ?
+:gf: ?
+:bg:1-3
+:k: you're the guys from that night right? that battle at the arcade was so awesome!
+:bf: oh! thanks i guess... who are you?
+:bg:1-4
+:k: i'm kauan! nice to meet yall, you should be Boyfriend and Girlfriend right?
+:bf: yea
+:k: mind doing a rap battle too?
+:bf: uhhhh, sure why not? 
+:bg:1-5
+:k: awesome!

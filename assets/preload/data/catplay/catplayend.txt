@@ -1,0 +1,11 @@
+:bg:4-1
+:k: haha that was epic!
+:bf: sure it was.. wow what a big crowd..
+:k: and we gave them a show, right?
+:gf: you guys sure did gave them a show, now how about we head to a pizzaria? i'm hungry
+:bg:4-2
+:bf: oh! i know i good pizzaria here, we can go there!
+:bg:4-3
+:gf: show us the way my good man
+:bf: .. hey Kauan.. you coming?
+:k: hell yeah i am!

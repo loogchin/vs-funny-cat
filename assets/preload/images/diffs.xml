@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="diffs.png">
+	<!-- Created with Adobe Animate version 20.5.1.31044 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="1dificulty easy0000" x="0" y="0" width="688" height="574"/>
+	<SubTexture name="2dificulty hard0000" x="688" y="0" width="825" height="591"/>
+	<SubTexture name="3dificulty medium0000" x="0" y="591" width="811" height="567"/>
+</TextureAtlas>
