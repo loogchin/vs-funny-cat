@@ -2,3 +2,8 @@ bf
 bfnight
 kauan
 kauannight
+bf-kauan
+bf-kauan2
+bf-kauan3
+bf-specialanims
+kapi

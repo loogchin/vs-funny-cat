@@ -29,6 +29,7 @@ class StoryMenuState extends MusicBeatState
 
 	var bg:FlxSprite;
 	var bf:FlxSprite;
+	var kap:FlxSprite;
 	var black:FlxSprite;
 	var blue:FlxSprite;
 	var curSelected:Int = 0;
@@ -43,8 +44,8 @@ class StoryMenuState extends MusicBeatState
 	static function weekData():Array<Dynamic>
 	{
 		return [
-			['Tutorial'],
-			['fuzzy', 'claws', 'catplay']
+			['fuzzy', 'claws', 'catplay'],
+			['scratched', 'score', 'catnip',"tick-tack"]
 		];
 	}
 	var curDifficulty:Int = 2;
@@ -97,11 +98,6 @@ class StoryMenuState extends MusicBeatState
 	override function create()
 	{
 
-
-		
-		
-
-
 		blue = new FlxSprite(-185,-225).loadGraphic(Paths.image('BluMenu'));
 		blue.scrollFactor.x = 0;
 		blue.scrollFactor.y = 0.10;
@@ -135,6 +131,20 @@ class StoryMenuState extends MusicBeatState
 			}
 		add(bf);
 		FlxTween.tween(bf,{x: -335},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+			{ 
+			}});
+
+		kap = new FlxSprite(-1500,-270).loadGraphic(Paths.image('KAPIMenu'));
+		kap.scrollFactor.x = 0;
+		kap.scrollFactor.y = 0.10;
+		kap.updateHitbox();
+		kap.scale.set(0.5, 0.5);
+		if(FlxG.save.data.antialiasing)
+			{
+				kap.antialiasing = true;
+			}
+		add(kap);
+		FlxTween.tween(kap,{x: -335},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
 			{ 
 			}});
 
@@ -372,6 +382,17 @@ class StoryMenuState extends MusicBeatState
 		{
 			lock.y = grpWeekText.members[lock.ID].y;
 		});
+
+		if (curWeek == 0){
+			bf.alpha = 1;
+			kap.alpha = 0;
+		}
+		else
+			{
+				bf.alpha = 0;
+				kap.alpha = 1;
+			}
+			
 
 		if (controls.RIGHT_P)
 			{
@@ -614,6 +635,9 @@ class StoryMenuState extends MusicBeatState
 
 	function aaa() {
 		FlxTween.tween(bf,{x: -1500},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+			{ 
+			}});
+		FlxTween.tween(kap,{x: -1500},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
 			{ 
 			}});
 		FlxTween.tween(dif,{x: 1500},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween)

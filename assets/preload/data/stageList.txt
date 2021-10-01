@@ -2,10 +2,4 @@ stage
 day
 day2
 night
-halloween
-philly
-limo
-mall
-mallEvil
-school
-schoolEvil
+arcade

@@ -1,0 +1,15 @@
+idle 0 0
+singUP 96 26
+singRIGHT 25 -117
+singLEFT 3 -37
+singDOWN 9 -165
+singUPmiss 60 27
+singRIGHTmiss 31 -117
+singLEFTmiss 20 -38
+singDOWNmiss 6 -175
+firstDeath 114 -10
+deathLoop -1 -11
+deathConfirm 0 277
+fall 120 16
+ticktack -2 -21
+kick 11 -34

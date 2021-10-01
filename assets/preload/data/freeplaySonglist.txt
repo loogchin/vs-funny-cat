@@ -1,4 +1,7 @@
-Tutorial:gf:0
 fuzzy:kauan:1
 claws:kauan:1
 catplay:kauannight:1
+scratched:kapi:2
+score:kapi:2
+catnip:kapi:2
+tick-tack:kapi:2

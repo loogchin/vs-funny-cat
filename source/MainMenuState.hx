@@ -56,8 +56,11 @@ class MainMenuState extends MusicBeatState
 	var blacka:FlxSprite;
 	var camFollow:FlxObject;
 	public static var finishedFunnyMove:Bool = false;
+	public static var cat:Bool = false;
 	public static var timer:Bool = true;
 	public static var credits:Bool = false;
+
+	static var kapis:Bool=false;
 
 	override function create()
 	{
@@ -119,19 +122,46 @@ class MainMenuState extends MusicBeatState
 					{ 
 					}});
 
-		character = new Character(-400, 330, 'bf');
+		
+
+		if(FlxG.save.data.kapistart!=true && !kapis){
+			kapis=true;
+			FlxG.save.data.kapistart=true;
+			character = new Character(-400, -33, 'kapi');	
+			cat = true;
+			}
+			else
+				{
+					if (FlxG.random.bool(50))
+						{
+							character = new Character(-400, 330, 'bf');
+							cat = false;
+						}
+					else 
+						{
+							character = new Character(-400, -33, 'kapi');	
+							cat = true;
+						}
+				}
+
+		
 		character.debugMode = true;
 		character.scale.set(0.8, 0.8);
 		character.scrollFactor.set(0, 0);
 		add(character);
-		if (firstStart)
-			FlxTween.tween(character,{x: -35},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
-				{ 
-				}});
-			else 
+		if (!cat)
+			{
 				FlxTween.tween(character,{x: -35},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
 					{ 
 					}});
+			}
+			else
+				{
+					FlxTween.tween(character,{x: 55},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+						{ 
+						}});
+				}
+
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
@@ -311,9 +341,18 @@ class MainMenuState extends MusicBeatState
 					{ 
 					}});
 
-				FlxTween.tween(character,{x: -35},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
-						{ 
-						}});
+					if (!cat)
+						{
+							FlxTween.tween(character,{x: -35},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+								{ 
+								}});
+						}
+						else
+							{
+								FlxTween.tween(character,{x: 55},1,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
+									{ 
+									}});
+							}
 				
 			}
 
@@ -343,7 +382,10 @@ class MainMenuState extends MusicBeatState
 					{
 				idk = false;
 				startTimer.cancel();
+				if (!cat)
 				character.playAnim('hey', true);
+				else 
+				character.playAnim('meow', true);
 			        }
 				else
 					{		

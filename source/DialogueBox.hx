@@ -40,107 +40,85 @@ class DialogueBox extends FlxSpriteGroup
 
 		switch (PlayState.SONG.song.toLowerCase())
 		{
-			case 'senpai':
-				FlxG.sound.playMusic(Paths.music('Lunchbox'), 0);
-				FlxG.sound.music.fadeIn(1, 0, 0.8);
 			case 'thorns':
 				FlxG.sound.playMusic(Paths.music('LunchboxScary'), 0);
 				FlxG.sound.music.fadeIn(1, 0, 0.8);
 		}
 
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
+		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFF11316b);
 		bgFade.scrollFactor.set();
-		bgFade.alpha = 0;
+		bgFade.alpha = 0.5;
 		add(bgFade);
 
-		new FlxTimer().start(0.83, function(tmr:FlxTimer)
-		{
-			bgFade.alpha += (1 / 5) * 0.7;
-			if (bgFade.alpha > 0.7)
-				bgFade.alpha = 0.7;
-		}, 5);
-
-		box = new FlxSprite(-20, 45);
+		box = new FlxSprite(0, 0);
 		
 		var hasDialog = false;
-		switch (PlayState.SONG.song.toLowerCase())
-		{
-			case 'senpai':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-pixel');
-				box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
-				box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
-			case 'roses':
-				hasDialog = true;
-				FlxG.sound.play(Paths.sound('ANGRY_TEXT_BOX'));
-
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-senpaiMad');
-				box.animation.addByPrefix('normalOpen', 'SENPAI ANGRY IMPACT SPEECH', 24, false);
-				box.animation.addByIndices('normal', 'SENPAI ANGRY IMPACT SPEECH', [4], "", 24);
-
-			case 'thorns':
-				hasDialog = true;
-				box.frames = Paths.getSparrowAtlas('weeb/pixelUI/dialogueBox-evil');
-				box.animation.addByPrefix('normalOpen', 'Spirit Textbox spawn', 24, false);
-				box.animation.addByIndices('normal', 'Spirit Textbox spawn', [11], "", 24);
-
-				var face:FlxSprite = new FlxSprite(320, 170).loadGraphic(Paths.image('weeb/spiritFaceForward'));
-				face.setGraphicSize(Std.int(face.width * 6));
-				add(face);
-		}
-
+		hasDialog = true;
+		box.frames = Paths.getSparrowAtlas('dialogueBox-pixel');
+		box.animation.addByPrefix('normalOpen', 'Text Box Appear', 24, false);
+		box.animation.addByIndices('normal', 'Text Box Appear', [4], "", 24);
 		this.dialogueList = dialogueList;
 		
 		if (!hasDialog)
 			return;
 		
-		portraitLeft = new FlxSprite(-20, 40);
-		portraitLeft.frames = Paths.getSparrowAtlas('weeb/senpaiPortrait');
+		portraitLeft = new FlxSprite(0, 160);
+		portraitLeft.frames = Paths.getSparrowAtlas('weeb/kapi');
 		portraitLeft.animation.addByPrefix('enter', 'Senpai Portrait Enter', 24, false);
-		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * PlayState.daPixelZoom * 0.9));
+		portraitLeft.setGraphicSize(Std.int(portraitLeft.width * 1));
 		portraitLeft.updateHitbox();
 		portraitLeft.scrollFactor.set();
 		add(portraitLeft);
 		portraitLeft.visible = false;
 
-		portraitRight = new FlxSprite(0, 40);
-		portraitRight.frames = Paths.getSparrowAtlas('weeb/bfPortrait');
-		portraitRight.animation.addByPrefix('enter', 'Boyfriend portrait enter', 24, false);
-		portraitRight.setGraphicSize(Std.int(portraitRight.width * PlayState.daPixelZoom * 0.9));
+		portraitRight = new FlxSprite(940, 250);
+		portraitRight.frames = Paths.getSparrowAtlas('weeb/portraits');
+		portraitRight.animation.addByPrefix('kauan confident', 'kauan confident', 24, false);
+		portraitRight.animation.addByPrefix('kauan>:3', 'kauan>:3', 24, false);
+		portraitRight.animation.addByPrefix('kauanconfused', 'kauanconfused', 24, false);
+		portraitRight.animation.addByPrefix('kauancry', 'kauancry', 24, false);
+		portraitRight.animation.addByPrefix('kauanhapi', 'kauanhapi', 24, false);
+		portraitRight.animation.addByPrefix('kauanhappy', 'kauanhappy', 24, false);
+		portraitRight.animation.addByPrefix('kauannotamused', 'kauannotamused', 24, false);
+		portraitRight.animation.addByPrefix('kauanpleading', 'kauanpleading', 24, false);
+		portraitRight.animation.addByPrefix('kauanreallynotamused', 'kauanreallynotamused', 24, false);
+		portraitRight.animation.addByPrefix('kauanrelief', 'kauanrelief', 24, false);
+		portraitRight.animation.addByPrefix('kauansmug', 'kauansmug', 24, false);
+		portraitRight.animation.addByPrefix('kauanworry', 'kauanworry', 24, false);
+		portraitRight.animation.addByPrefix('troll', 'troll', 24, false);
 		portraitRight.updateHitbox();
 		portraitRight.scrollFactor.set();
+		portraitRight.setGraphicSize(Std.int(portraitRight.width * 1.6));
+		portraitRight.antialiasing = true;
 		add(portraitRight);
 		portraitRight.visible = false;
-		
+
 		box.animation.play('normalOpen');
-		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
+		box.scale.set(1.28,1);
 		box.updateHitbox();
 		add(box);
 
 		box.screenCenter(X);
-		portraitLeft.screenCenter(X);
 
 		handSelect = new FlxSprite(FlxG.width * 0.9, FlxG.height * 0.9).loadGraphic(Paths.image('weeb/pixelUI/hand_textbox'));
-		add(handSelect);
-
-
+		
 		if (!talkingRight)
 		{
 			// box.flipX = true;
 		}
 
-		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.font = 'Pixel Arial 11 Bold';
-		dropText.color = 0xFFD89494;
+		dropText = new FlxText(75, 500, Std.int(FlxG.width * 0.8), "", 42);
+		dropText.font = 'Delfino';
+		dropText.color = 0x00000000;
 		add(dropText);
 
-		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
-		swagDialogue.font = 'Pixel Arial 11 Bold';
-		swagDialogue.color = 0xFF3F2021;
+		swagDialogue = new FlxTypeText(72, 497, Std.int(FlxG.width * 0.8), "", 42);
+		swagDialogue.font = 'Delfino';
+		swagDialogue.color = 0xFFFFFFFF;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
 
-		dialogue = new Alphabet(0, 80, "", false, true);
+		dialogue = new Alphabet(0, 20, "", false, true);
 		// dialogue.x = 90;
 		// add(dialogue);
 	}
@@ -150,12 +128,9 @@ class DialogueBox extends FlxSpriteGroup
 
 	override function update(elapsed:Float)
 	{
-		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'roses')
-			portraitLeft.visible = false;
 		if (PlayState.SONG.song.toLowerCase() == 'thorns')
 		{
-			portraitLeft.visible = false;
+			portraitLeft.color = FlxColor.BLACK;
 			swagDialogue.color = FlxColor.WHITE;
 			dropText.color = FlxColor.BLACK;
 		}
@@ -177,7 +152,7 @@ class DialogueBox extends FlxSpriteGroup
 			dialogueStarted = true;
 		}
 
-		if (PlayerSettings.player1.controls.ACCEPT && dialogueStarted == true)
+		if (FlxG.keys.justPressed.ANY  && dialogueStarted == true)
 		{
 			remove(dialogue);
 				
@@ -192,17 +167,17 @@ class DialogueBox extends FlxSpriteGroup
 					if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'thorns')
 						FlxG.sound.music.fadeOut(2.2, 0);
 
-					new FlxTimer().start(0.2, function(tmr:FlxTimer)
+					new FlxTimer().start(0.1, function(tmr:FlxTimer)
 					{
-						box.alpha -= 1 / 5;
-						bgFade.alpha -= 1 / 5 * 0.7;
+						box.alpha -= 1 / 10;
+						bgFade.alpha -= 1 / 10 * 0.7;
 						portraitLeft.visible = false;
 						portraitRight.visible = false;
-						swagDialogue.alpha -= 1 / 5;
+						swagDialogue.alpha -= 1 / 10;
 						dropText.alpha = swagDialogue.alpha;
 					}, 5);
 
-					new FlxTimer().start(1.2, function(tmr:FlxTimer)
+					new FlxTimer().start(.5, function(tmr:FlxTimer)
 					{
 						finishThing();
 						kill();
@@ -236,18 +211,89 @@ class DialogueBox extends FlxSpriteGroup
 		{
 			case 'dad':
 				portraitRight.visible = false;
-				if (!portraitLeft.visible)
-				{
-					portraitLeft.visible = true;
-					portraitLeft.animation.play('enter');
-				}
-			case 'bf':
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/kapi');
+				portraitLeft.visible = true;
+				portraitLeft.animation.play('enter');
+			case 'kapimad':
+				portraitRight.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/kapimad');
+				portraitLeft.visible = true;
+				portraitLeft.animation.play('enter');
+			case 'kapiconfused':
+				portraitRight.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/kapiconfused');
+				portraitLeft.visible = true;
+				portraitLeft.animation.play('enter');
+			case 'kapicute':
+				portraitRight.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/kapicute');
+				portraitLeft.visible = true;
+				portraitLeft.animation.play('enter');
+			case 'kapistare':
+				portraitRight.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/kapistare');
+				portraitLeft.visible = true;
+				portraitLeft.animation.play('enter');
+			case 'wap':
+				portraitRight.visible = false;
+				portraitLeft.frames = Paths.getSparrowAtlas('weeb/wap');
+				portraitLeft.visible = true;
+				portraitLeft.animation.play('enter');
+			case 'kauan confident':
+				portraitRight.visible = true;
 				portraitLeft.visible = false;
-				if (!portraitRight.visible)
-				{
-					portraitRight.visible = true;
-					portraitRight.animation.play('enter');
-				}
+				portraitRight.animation.play('kauan confident');
+			case 'kauan>3':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauan>:3');
+			case 'kauanconfused':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanconfused');
+			case 'kauancry':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauancry');
+			case 'kauanhapi':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanhapi');
+			case 'kauanhappy':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanhappy');
+			case 'kauannotamused':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauannotamused');
+			case 'kauanpleading':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanpleading');
+			case 'kauanreallynotamused':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanreallynotamused');
+			case 'kauanrelief':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanrelief');
+			case 'kauansmug':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauansmug');
+			case 'kauanworry':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('kauanworry');
+			case 'troll':
+				portraitRight.visible = true;
+				portraitLeft.visible = false;
+				portraitRight.animation.play('troll');
+			case 'nar':
+				portraitRight.visible = false;
+				portraitLeft.visible = false;
 		}
 	}
 

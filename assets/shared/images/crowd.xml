@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="crowd.png">
+	<!-- Created with Adobe Animate version 20.5.1.31044 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="crowd0000" x="0" y="0" width="1585" height="975" frameX="-9" frameY="-24" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0001" x="1585" y="0" width="1585" height="975" frameX="-9" frameY="-24" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0002" x="0" y="975" width="1585" height="975" frameX="-9" frameY="-24" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0003" x="1585" y="975" width="1585" height="975" frameX="-9" frameY="-24" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0004" x="0" y="1950" width="1577" height="975" frameX="-9" frameY="-24" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0005" x="1577" y="1950" width="1589" height="959" frameX="0" frameY="-40" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0006" x="0" y="2925" width="1589" height="990" frameX="-4" frameY="-9" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0007" x="1589" y="2925" width="1586" height="999" frameX="-10" frameY="0" frameWidth="1596" frameHeight="999"/>
+	<SubTexture name="crowd0008" x="0" y="0" width="1585" height="975" frameX="-9" frameY="-24" frameWidth="1596" frameHeight="999"/>
+</TextureAtlas>

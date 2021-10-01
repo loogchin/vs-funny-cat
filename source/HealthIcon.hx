@@ -48,6 +48,11 @@ class HealthIcon extends FlxSprite
 		animation.add('monster-christmas', [19, 20], 0, false, isPlayer);
 		animation.add('kauan', [24, 25], 0, false, isPlayer);
 		animation.add('kauannight', [24, 25], 0, false, isPlayer);
+		animation.add('bf-kauan', [24, 25], 0, false, isPlayer);
+		animation.add('bf-kauan2', [24, 25], 0, false, isPlayer);
+		animation.add('bf-specialanims', [24, 25], 0, false, isPlayer);
+		animation.add('bf-kauan3', [24, 25], 0, false, isPlayer);
+		animation.add('kapi', [26, 27], 0, false, isPlayer);
 		animation.add('monster-christmas', [19, 20], 0, false, isPlayer);
 		animation.play(char);
 

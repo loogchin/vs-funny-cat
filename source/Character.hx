@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
+import PlayState;
 
 using StringTools;
 
@@ -130,6 +131,26 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
+
+				case 'kapi':
+					tex = Paths.getSparrowAtlas('kapi','shared',true);
+					frames = tex;
+					animation.addByIndices('idle', 'Dad idle dance', [2, 4, 6, 8, 10, 0], "", 12, false);
+					animation.addByPrefix('singUP', 'Dad Sing Note UP', 24);
+					animation.addByPrefix('singRIGHT', 'Dad Sing Note RIGHT', 24);
+					animation.addByPrefix('singDOWN', 'Dad Sing Note DOWN', 24);
+					animation.addByPrefix('singLEFT', 'Dad Sing Note LEFT', 24);
+					animation.addByPrefix('meow', 'Dad meow', 24, false);
+					animation.addByPrefix('stare', 'Dad stare', 24, false);
+					
+					addOffset('idle');
+					
+                    loadOffsetFile(curCharacter);
+	
+					addOffset("stare");
+					addOffset("meow");
+					playAnim('idle');
+
 				case 'kauan':
 					tex = Paths.getSparrowAtlas('Kauan_Assets','shared',true);
 					frames = tex;
@@ -277,6 +298,122 @@ class Character extends FlxSprite
 				loadOffsetFile(curCharacter);
 
 				playAnim('idle');
+
+				flipX = true;
+
+				case 'bf-kauan':
+					var tex = Paths.getSparrowAtlas('kauanworried','shared',true);
+					frames = tex;
+	
+					trace(tex.frames.length);
+	
+					animation.addByPrefix('idle', 'Kauan Idle Dance', 24, false);
+					animation.addByPrefix('singUP', 'Kauan Up note0', 24, false);
+					animation.addByPrefix('singLEFT', 'Kauan Left note0', 24, false);
+					animation.addByPrefix('singRIGHT', 'Kauan Right note0', 24, false);
+					animation.addByPrefix('singDOWN', 'Kauan Down note0', 24, false);
+					animation.addByPrefix('singUPmiss', 'Kauan Up note MISS', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'Kauan Left note MISS', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'Kauan Right note MISS', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'Kauan Down note MISS', 24, false);
+	
+					animation.addByPrefix('firstDeath', "Kauan dies", 24, false);
+					animation.addByPrefix('deathLoop', "Kauan death loop", 24, false);
+					animation.addByPrefix('deathConfirm', "Kauan Death Confirm", 24, false);
+
+					animation.addByPrefix('fall', "Kauan Falls and dies", 32, false);
+					animation.addByPrefix('ticktack', "Kauan tick tack", 24, false);
+					animation.addByPrefix('kick', "Kauan Kicking", 24, false);
+	
+					loadOffsetFile(curCharacter);
+	
+					playAnim('idle');
+	
+					flipX = true;
+
+				case 'bf-kauan2':
+					var tex = Paths.getSparrowAtlas('Kauan week2 confident','shared',true);
+					frames = tex;
+	
+					trace(tex.frames.length);
+	
+					animation.addByPrefix('idle', 'Kauan Idle Dance', 24, false);
+					animation.addByPrefix('singUP', 'Kauan Up note0', 24, false);
+					animation.addByPrefix('singLEFT', 'Kauan Left note0', 24, false);
+					animation.addByPrefix('singRIGHT', 'Kauan Right note0', 24, false);
+					animation.addByPrefix('singDOWN', 'Kauan Down note0', 24, false);
+					animation.addByPrefix('singUPmiss', 'Kauan Up note MISS', 24, false);
+					animation.addByPrefix('singLEFTmiss', 'Kauan Left note MISS', 24, false);
+					animation.addByPrefix('singRIGHTmiss', 'Kauan Right note MISS', 24, false);
+					animation.addByPrefix('singDOWNmiss', 'Kauan Down note MISS', 24, false);
+	
+					animation.addByPrefix('firstDeath', "Kauan dies", 24, false);
+					animation.addByPrefix('deathLoop', "Kauan death loop", 24, false);
+					animation.addByPrefix('deathConfirm', "Kauan Death Confirm", 24, false);
+
+					animation.addByPrefix('fall', "Kauan Falls and dies", 32, false);
+					animation.addByPrefix('ticktack', "Kauan tick tack", 24, false);
+					animation.addByPrefix('kick', "Kauan Kicking", 24, false);
+	
+					loadOffsetFile(curCharacter);
+	
+					playAnim('idle');
+	
+					flipX = true;
+
+			case 'bf-kauan3':
+				var tex = Paths.getSparrowAtlas('KauanProGamerMoves','shared',true);
+				frames = tex;
+
+				trace(tex.frames.length);
+
+				animation.addByPrefix('idle', 'Kauan Idle Dance', 24, false);
+				animation.addByPrefix('singUP', 'Kauan Up note0', 24, false);
+				animation.addByPrefix('singLEFT', 'Kauan Left note0', 24, false);
+				animation.addByPrefix('singRIGHT', 'Kauan Right note0', 24, false);
+				animation.addByPrefix('singDOWN', 'Kauan Down note0', 24, false);
+				animation.addByPrefix('singUPmiss', 'Kauan Up note MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'Kauan Left note MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'Kauan Right note MISS', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'Kauan Down note MISS', 24, false);
+
+				animation.addByPrefix('firstDeath', "Kauan dies", 24, false);
+				animation.addByPrefix('deathLoop', "Kauan death loop", 24, false);
+				animation.addByPrefix('deathConfirm', "Kauan Death Confirm", 24, false);
+
+				animation.addByPrefix('fall', "Kauan Falls and dies", 32, false);
+				animation.addByPrefix('ticktack', "Kauan tick tack", 24, false);
+				animation.addByPrefix('kick', "Kauan Kicking", 24, false);
+
+				loadOffsetFile(curCharacter);
+
+				playAnim('idle');
+
+				flipX = true;
+
+			case 'bf-specialanims':
+				if (PlayState.SONG.song == 'scratched')
+					tex = Paths.getSparrowAtlas('kauanworried','shared',true);
+				else if (PlayState.SONG.song == 'score')
+					tex = Paths.getSparrowAtlas('Kauan week2 confident','shared',true);
+				else if (PlayState.SONG.song == 'catnip')
+					tex = Paths.getSparrowAtlas('KauanProGamerMoves','shared',true);
+				else if (PlayState.SONG.song == 'tick-tack')
+					tex = Paths.getSparrowAtlas('KauanProGamerMoves','shared',true);
+				else
+					tex = Paths.getSparrowAtlas('KauanProGamerMoves','shared',true);
+				frames = tex;
+
+				trace(tex.frames.length);
+
+				animation.addByIndices('skillissue', 'Kauan dies', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,13], "", 24, false);
+				animation.addByPrefix('goodnightGirlCyaTommorow', "Kauan Falls and dies", 28, false);
+				animation.addByPrefix('kick', "Kauan Kicking", 24, false);
+
+				if (PlayState.SONG.song == 'tick-tack' || PlayState.SONG.song == 'catnip')
+					loadOffsetFile(curCharacter);
+				else
+					loadOffsetFile(curCharacter + '2');
 
 				flipX = true;
 

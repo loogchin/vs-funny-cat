@@ -20,12 +20,14 @@ class GameOverSubstate2 extends MusicBeatSubstate
 		var daBf:String = '';
 		switch (PlayState.SONG.player1)
 		{
-			case 'bf-pixel':
-				stageSuffix = '-pixel';
-				daBf = 'bf-pixel-dead';
 			default:
 				daBf = 'bf';
 		}
+
+		if (PlayState.SONG.player2 == 'kapi')
+			{
+				daBf = 'bf-kauan3';
+			}
 
 		super();
 
@@ -37,7 +39,10 @@ class GameOverSubstate2 extends MusicBeatSubstate
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 		add(camFollow);
 
-		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
+		if (PlayState.SONG.player2 == 'kapi')
+			FlxG.sound.play(Paths.sound('lmaoL'));
+		else
+			FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
 
 		// FlxG.camera.followLerp = 1;

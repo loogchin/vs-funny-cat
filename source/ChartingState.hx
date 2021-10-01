@@ -85,6 +85,8 @@ class ChartingState extends MusicBeatState
 	var writingNotesText:FlxText;
 	var highlight:FlxSprite;
 
+	var check_skillNote:FlxUICheckBox;
+
 	var GRID_SIZE:Int = 40;
 
 	var subDivisions:Float = 1;
@@ -1265,10 +1267,13 @@ class ChartingState extends MusicBeatState
 
 		var stepperSusLengthLabel = new FlxText(74,10,'Note Sustain Length');
 
+		var check_skillNote = new FlxUICheckBox(10, 70, null, null, "skill issue note", 100);
+
 		var applyLength:FlxButton = new FlxButton(10, 100, 'Apply Data');
 
 		tab_group_note.add(stepperSusLength);
 		tab_group_note.add(stepperSusLengthLabel);
+		tab_group_note.add(check_skillNote);
 		tab_group_note.add(applyLength);
 
 		UI_box.addGroup(tab_group_note);
@@ -1362,6 +1367,11 @@ class ChartingState extends MusicBeatState
 			{
 				case "Alternate Animation":
 					getSectionByTime(Conductor.songPosition).altAnim = check.checked;
+				case "skill issue note": 
+					if (curSelectedNote == null)
+						return;
+
+					curSelectedNote[6] = true;
 			}
 		}
 		else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper))

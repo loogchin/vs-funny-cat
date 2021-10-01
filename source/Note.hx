@@ -33,6 +33,8 @@ class Note extends FlxSprite
 	public var originColor:Int = 0; // The sustain note's original note's color
 	public var noteSection:Int = 0;
 
+	public var skillAnim:Bool = false;
+
 	public var noteCharterObject:FlxSprite;
 
 	public var noteScore:Float = 1;
@@ -61,7 +63,7 @@ class Note extends FlxSprite
 
 	public var children:Array<Note> = [];
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?inCharter:Bool = false, isskillAnim:Bool = false)
 	{
 		super();
 
@@ -105,6 +107,9 @@ class Note extends FlxSprite
 
 		if (inCharter)
 		{
+			if (PlayState.SONG.player2 == 'kapi')
+			frames = Paths.getSparrowAtlas('NOTE_assets2');
+			else
 			frames = Paths.getSparrowAtlas('NOTE_assets');
 
 			for (i in 0...4)
@@ -113,6 +118,11 @@ class Note extends FlxSprite
 				animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
 				animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
 			}
+
+			animation.addByPrefix('skillp', 'leftskill');
+			animation.addByPrefix('skillg', 'upskill');
+			animation.addByPrefix('skillr', 'rightskill');
+			animation.addByPrefix('skillb', 'downskill');
 
 			setGraphicSize(Std.int(width * 0.7));
 			updateHitbox();
@@ -144,7 +154,10 @@ class Note extends FlxSprite
 					setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 					updateHitbox();
 				default:
-					frames = Paths.getSparrowAtlas('NOTE_assets');
+					if (PlayState.SONG.player2 == 'kapi')
+						frames = Paths.getSparrowAtlas('NOTE_assets2');
+						else
+						frames = Paths.getSparrowAtlas('NOTE_assets');
 
 					for (i in 0...4)
 					{
@@ -152,6 +165,11 @@ class Note extends FlxSprite
 						animation.addByPrefix(dataColor[i] + 'hold', dataColor[i] + ' hold'); // Hold
 						animation.addByPrefix(dataColor[i] + 'holdend', dataColor[i] + ' tail'); // Tails
 					}
+
+					animation.addByPrefix('skillp', 'leftskill');
+					animation.addByPrefix('skillg', 'upskill');
+					animation.addByPrefix('skillr', 'rightskill');
+					animation.addByPrefix('skillb', 'downskill');
 
 					setGraphicSize(Std.int(width * 0.7));
 					updateHitbox();
@@ -164,7 +182,24 @@ class Note extends FlxSprite
 		}
 
 		x += swagWidth * noteData;
-		animation.play(dataColor[noteData] + 'Scroll');
+		if (isskillAnim)
+			{
+				switch (noteData)
+				{
+					case 0:
+						animation.play('skillp');
+					case 1:
+						animation.play('skillb');
+					case 2:
+						animation.play('skillg');
+					case 3:
+						animation.play('skillr');
+				}
+			}
+			else
+				{
+					animation.play(dataColor[noteData] + 'Scroll');
+				}
 		originColor = noteData; // The note's origin color will be checked by its sustain notes
 
 		if (FlxG.save.data.stepMania && !isSustainNote)
