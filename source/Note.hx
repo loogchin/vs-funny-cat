@@ -86,7 +86,7 @@ class Note extends FlxSprite
 		{
 			this.strumTime = strumTime;
 			rStrumTime = strumTime - (FlxG.save.data.offset + PlayState.songOffset);
-			#if sys
+			#if (sys && !mobile)
 			if (PlayState.isSM)
 			{
 				rStrumTime = Math.round(rStrumTime + Std.parseFloat(PlayState.sm.header.OFFSET));

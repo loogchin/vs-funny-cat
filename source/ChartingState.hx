@@ -2,7 +2,7 @@ package;
 
 import openfl.system.System;
 import lime.app.Application;
-#if sys
+#if (sys && !mobile)
 import sys.io.File;
 #end
 import flixel.addons.ui.FlxUIButton;
@@ -1014,7 +1014,7 @@ class ChartingState extends MusicBeatState
 		var stepperSpeedLabel = new FlxText(74,80,'Scroll Speed');
 		
 		var stepperVocalVol:FlxUINumericStepper = new FlxUINumericStepper(10, 95, 0.1, 1, 0.1, 10, 1);
-		#if sys
+		#if (sys && !mobile)
 		if (!PlayState.isSM)
 			stepperVocalVol.value = vocals.volume;
 		else
@@ -1300,7 +1300,7 @@ class ChartingState extends MusicBeatState
 			FlxG.sound.music.stop();
 			// vocals.stop();
 		}
-		#if sys
+		#if (sys && !mobile)
 		if (PlayState.isSM)
 		{
 			trace("Loading " + PlayState.pathToSm + "/" + PlayState.sm.header.MUSIC);
@@ -1316,7 +1316,7 @@ class ChartingState extends MusicBeatState
 		#end
 
 		// WONT WORK FOR TUTORIAL OR TEST SONG!!! REDO LATER
-		#if sys
+		#if (sys && !mobile)
 		if (PlayState.isSM)
 			vocals = null;
 		else

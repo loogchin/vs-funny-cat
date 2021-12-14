@@ -906,3 +906,23 @@ class ResetSettings extends Option
 		return confirm ? "Confirm Settings Reset" : "Reset Settings";
 	}
 }
+class MobileControls extends Option
+{
+	public function new(desc:String)
+	{
+		super();
+		description = desc;
+	}
+
+	public override function press():Bool
+	{
+		trace("switch");
+		FlxG.switchState(new options.CustomControlsState());
+		return false;
+	}
+
+	private override function updateDisplay():String
+	{
+		return "Mobile Controls";
+	}
+}

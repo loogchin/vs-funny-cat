@@ -23,7 +23,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import io.newgrounds.NG;
+import flixel.FlxCamera;
 import lime.app.Application;
 import lime.utils.Assets;
 import flixel.math.FlxMath;
@@ -33,7 +33,7 @@ import flixel.input.FlxKeyManager;
 
 using StringTools;
 
-class ResultsScreen extends FlxSubState
+class ResultsScreen extends MusicBeatSubstate
 {
     public var background:FlxSprite;
     public var text:FlxText;
@@ -169,6 +169,15 @@ class ResultsScreen extends FlxSubState
 
         cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 
+        #if mobileC
+        addVirtualPad(NONE, A_B);
+        
+        var camcontrol = new FlxCamera();
+        FlxG.cameras.add(camcontrol);
+        camcontrol.bgColor.alpha = 0;
+        _virtualpad.cameras = [camcontrol];
+        #end
+
 		super.create();
 	}
 
@@ -182,24 +191,10 @@ class ResultsScreen extends FlxSubState
 
         // keybinds
 
-        if (PlayerSettings.player1.controls.ACCEPT)
+        if (controls.ACCEPT)
         {
             music.fadeOut(0.3);
             
-            PlayState.loadRep = false;
-            PlayState.rep = null;
-
-			var songHighscore = StringTools.replace(PlayState.SONG.song, " ", "-");
-			switch (songHighscore) {
-				case 'Dad-Battle': songHighscore = 'Dadbattle';
-				case 'Philly-Nice': songHighscore = 'Philly';
-			}
-
-			#if !switch
-			Highscore.saveScore(songHighscore, Math.round(PlayState.instance.songScore), PlayState.storyDifficulty);
-			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(PlayState.instance.accuracy),PlayState.storyDifficulty);
-			#end
-
             if (PlayState.isStoryMode)
             {
                 FlxG.sound.playMusic(Paths.music('freakyMenu'));
@@ -210,100 +205,9 @@ class ResultsScreen extends FlxSubState
                 FlxG.switchState(new FreeplayState());
         }
 
-        if (FlxG.keys.justPressed.F1 && !PlayState.loadRep)
+        if (controls.BACK)
         {
-            trace(PlayState.rep.path);
-            PlayState.rep = Replay.LoadReplay(PlayState.rep.path);
-
-            PlayState.loadRep = true;
-            PlayState.isSM = PlayState.rep.replay.sm;
-
-            var songFormat = StringTools.replace(PlayState.rep.replay.songName, " ", "-");
-            switch (songFormat) {
-                case 'Dad-Battle': songFormat = 'Dadbattle';
-                case 'Philly-Nice': songFormat = 'Philly';
-                    // Replay v1.0 support
-                case 'dad-battle': songFormat = 'Dadbattle';
-                case 'philly-nice': songFormat = 'Philly';
-            }
-
-			var songHighscore = StringTools.replace(PlayState.SONG.song, " ", "-");
-			switch (songHighscore) {
-				case 'Dad-Battle': songHighscore = 'Dadbattle';
-				case 'Philly-Nice': songHighscore = 'Philly';
-			}
-
-			#if !switch
-			Highscore.saveScore(songHighscore, Math.round(PlayState.instance.songScore), PlayState.storyDifficulty);
-			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(PlayState.instance.accuracy),PlayState.storyDifficulty);
-			#end
-
-            #if sys
-            if (PlayState.rep.replay.sm)
-                if (!FileSystem.exists(StringTools.replace(PlayState.rep.replay.chartPath,"converted.json","")))
-                {
-                    Application.current.window.alert("The SM file in this replay does not exist!","SM Replays");
-                    return;
-                }
-            #end
-
-            var poop = "";
-
-            #if sys
-            if (PlayState.isSM)
-            {
-                poop = File.getContent(PlayState.rep.replay.chartPath);
-                try
-                    {
-                PlayState.sm = SMFile.loadFile(PlayState.pathToSm + "/" + StringTools.replace(PlayState.rep.replay.songName," ", "_") + ".sm");
-                    }
-                    catch(e:Exception)
-                    {
-                        Application.current.window.alert("Make sure that the SM file is called " + PlayState.pathToSm + "/" + StringTools.replace(PlayState.rep.replay.songName," ", "_") + ".sm!\nAs I couldn't read it.","SM Replays");
-                        return;
-                    }
-            }
-            else
-                poop = Highscore.formatSong(songFormat, PlayState.rep.replay.songDiff);
-            #else
-            poop = Highscore.formatSong(PlayState.rep.replay.songName, PlayState.rep.replay.songDiff);
-            #end
-
-            music.fadeOut(0.3);
-
-            if (PlayState.isSM)
-                PlayState.SONG = Song.loadFromJsonRAW(poop);
-            else
-                PlayState.SONG = Song.loadFromJson(poop, PlayState.rep.replay.songName);
-            PlayState.isStoryMode = false;
-            PlayState.storyDifficulty = PlayState.rep.replay.songDiff;
-            LoadingState.loadAndSwitchState(new PlayState());
-        }
-
-        if (FlxG.keys.justPressed.F2  && !PlayState.loadRep)
-        {
-            PlayState.rep = null;
-
-            PlayState.loadRep = false;
-
-			var songHighscore = StringTools.replace(PlayState.SONG.song, " ", "-");
-			switch (songHighscore) {
-				case 'Dad-Battle': songHighscore = 'Dadbattle';
-				case 'Philly-Nice': songHighscore = 'Philly';
-			}
-
-			#if !switch
-			Highscore.saveScore(songHighscore, Math.round(PlayState.instance.songScore), PlayState.storyDifficulty);
-			Highscore.saveCombo(songHighscore, Ratings.GenerateLetterRank(PlayState.instance.accuracy),PlayState.storyDifficulty);
-			#end
-
             var songFormat = StringTools.replace(PlayState.SONG.song, " ", "-");
-            switch (songFormat) {
-                case 'Dad-Battle': songFormat = 'Dadbattle';
-                case 'Philly-Nice': songFormat = 'Philly';
-                case 'dad-battle': songFormat = 'Dadbattle';
-                case 'philly-nice': songFormat = 'Philly';
-            }
 
             var poop:String = Highscore.formatSong(songFormat, PlayState.storyDifficulty);
 

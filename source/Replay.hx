@@ -90,7 +90,7 @@ class Replay
 
 	public function SaveReplay(notearray:Array<Dynamic>, judge:Array<String>, ana:Analysis)
 	{
-		#if sys
+		#if (sys && !mobile)
 		var chartPath = PlayState.isSM ? PlayState.pathToSm + "/converted.json" : "";
 		#else
 		var chartPath = "";

@@ -173,7 +173,7 @@ class LoadReplayState extends MusicBeatState
 
 					var poop = "";
 					
-					#if sys
+					#if (sys && !mobile)
 					if (PlayState.rep.replay.sm)
 						if (!FileSystem.exists(StringTools.replace(PlayState.rep.replay.chartPath,"converted.json","")))
 						{
@@ -183,12 +183,12 @@ class LoadReplayState extends MusicBeatState
 					#end
 
 					PlayState.isSM = PlayState.rep.replay.sm;
-					#if sys
+					#if (sys && !mobile)
 					if (PlayState.isSM)
 						PlayState.pathToSm = StringTools.replace(PlayState.rep.replay.chartPath,"converted.json","");
 					#end
 
-					#if sys
+					#if (sys && !mobile)
 					if (PlayState.isSM)
 					{
 						poop = File.getContent(PlayState.rep.replay.chartPath);
